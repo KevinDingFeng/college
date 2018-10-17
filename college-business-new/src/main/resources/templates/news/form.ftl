@@ -24,6 +24,9 @@
 	<script type="text/javascript" src="/assets/summernote/summernote.min.js"></script>
 	<script type="text/javascript" src="/assets/summernote/lang/summernote-zh-CN.js"></script>
 </head>
+<style>
+.modal-dialog{margin:52ps auto;}
+</style>
 <body>
 <!--[if lte IE 9]>
 <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
@@ -112,51 +115,36 @@
             	<div class="am-g am-margin-top-sm">
               		<div class="am-u-sm-12 am-u-md-2 am-text-right admin-form-text">内容</div>
               		<div class="am-u-sm-12 am-u-md-10">
-                		<div class="summernote"  placeholder="正文" action="/sys_new/upload"></div>
-						<input type="hidden" id="summernoteContent" name="content" required="required" value="${entity.content!''}" />
+                		<div class="summernote" name="content" placeholder="正文" action="/sys_new/upload"></div>
+						<input type="hidden" id="summernoteContent" required="required" value="${(entity.content!'')?html}" />
 					</div>
               	</div>
 		        <div class="am-margin">
-					<button type="button" onclick="doSubmit()" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+					<button type="button" onclick="iframeCallback('editNewsForm')" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
 				</div>
             </div>
 		</div>
 	</form>
     </div>
     </div>
-    </div>
     
-    
+      <footer class="admin-content-footer">
+	    <hr>
+	    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+	  </footer>  
     
 	<script type="text/javascript" src="/assets/summernotejs/summernote.js"></script>
     <script>
 if($("#summernoteContent").val()){
 	$('.summernote').summernote('code', $("#summernoteContent").val());
 }
-function doSubmit(){
-	//console.log($("input[name='coach']:checked").val());
-	$("#editNewsForm").submit();
-}   
+
     </script>
   </div>
-
-  <footer class="admin-content-footer">
-    <hr>
-    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
-  </footer>
-</div>
 <!-- content end -->
-
 </div>
 
 <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 
-<footer>
-  <hr>
-  <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
-</footer>
-
-<script src="/assets/js/amazeui.min.js"></script>
-<script src="/assets/js/app.js"></script>
 </body>
 </html>

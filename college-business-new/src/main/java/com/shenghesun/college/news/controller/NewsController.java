@@ -1,5 +1,8 @@
 package com.shenghesun.college.news.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -30,11 +34,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.shenghesun.college.news.entity.SysNews;
 import com.shenghesun.college.news.service.SysNewsService;
 import com.shenghesun.college.sso.model.LoginInfo;
 import com.shenghesun.college.system.service.SysUserService;
+import com.shenghesun.college.utils.FileUtils;
 import com.shenghesun.college.utils.JsonUtils;
 
 @Controller
@@ -78,7 +84,6 @@ public class NewsController {
 		}
 	}
 
-	
 	@Autowired
 	private SysNewsService newsService;
 	@Autowired
@@ -86,31 +91,34 @@ public class NewsController {
 
 	/**
 	 * 新闻首页，即新闻列表页，也作为当前系统的首页使用
+	 * 
 	 * @param pageNum
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(@RequestParam(value = "pageNum", required = false) Integer pageNum, Model model) {
-		//  获取登录用户，判断其是否拥有查看新闻的权限
-		LoginInfo info = (LoginInfo)SecurityUtils.getSubject().getPrincipal();
-		if(userService.hasPermission(info.getId())) {
-			//构建分页信息
+		// 获取登录用户，判断其是否拥有查看新闻的权限
+		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
+		if (userService.hasPermission(info.getId())) {
+			// 构建分页信息
 			pageNum = pageNum == null ? 0 : pageNum;
 			Pageable pageable = this.getListPageable(pageNum);
 			Page<SysNews> page = newsService.findBySpecification(this.getSpecification(), pageable);
 			model.addAttribute("page", page);
 			model.addAttribute("pageNum", pageNum);
 			return "news/list";
-		}else {
+		} else {
 			return "redirect:/logout";
 		}
 	}
+
 	private Pageable getListPageable(Integer pageNum) {
 		Sort sort = new Sort(Direction.DESC, "creation");
 		Pageable pageable = new PageRequest(pageNum, 20, sort);
 		return pageable;
 	}
+
 	private Specification<SysNews> getSpecification() {
 
 		return new Specification<SysNews>() {
@@ -118,32 +126,33 @@ public class NewsController {
 			public Predicate toPredicate(Root<SysNews> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				List<Predicate> list = new ArrayList<Predicate>();
 				list.add(cb.equal(root.get("removed"), false));
-				
+
 				Predicate[] p = new Predicate[list.size()];
 				return cb.and(list.toArray(p));
 			}
 		};
 	}
-	
+
 	@RequestMapping(value = "/form", method = RequestMethod.GET)
 	public String form(@RequestParam(value = "id", required = false) Long id, Model model) {
-		//  获取登录用户，判断其是否拥有查看新闻的权限
-		LoginInfo info = (LoginInfo)SecurityUtils.getSubject().getPrincipal();
-		if(userService.hasPermission(info.getId())) {
-			//判断该操作是新增还是修改
+		// 获取登录用户，判断其是否拥有查看新闻的权限
+		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
+		if (userService.hasPermission(info.getId())) {
+			// 判断该操作是新增还是修改
 			SysNews news = null;
-			if(id != null && id > 0L) {
+			if (id != null && id > 0L) {
 				news = newsService.findById(id);
 			}
-			if(news == null) {
+			if (news == null) {
 				news = new SysNews();
 			}
 			model.addAttribute("entity", news);
 			return "news/form";
-		}else {
+		} else {
 			return "redirect:/logout";
 		}
 	}
+
 	/**
 	 * 富文本图片保存
 	 * 
@@ -152,55 +161,97 @@ public class NewsController {
 	 * @param uploadFile
 	 * @return
 	 */
-	@RequestMapping(value = "/upload", method = RequestMethod.GET)
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	@ResponseBody
 	public String ckeditorUpload(@RequestParam(value = "uploadFile", required = true) MultipartFile uploadFile) {
-		// TODO 获取登录用户，判断其是否拥有查看新闻的权限
-		if (uploadFile.getSize() != 0L) {
-			return uploadFile.getOriginalFilename();
+		// 获取登录用户，判断其是否拥有查看新闻的权限
+		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
+		if (userService.hasPermission(info.getId())) {
+			if (uploadFile.getSize() != 0L) {
+				try {
+					return this.uploadFile(uploadFile.getOriginalFilename(), uploadFile.getInputStream());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return null;
 	}
-	
+
+	@Value("${file.path.upload}")
+	private String uploadFilePath;
+	@Value("${file.path.show}")
+	private String showFilePath;
+
+	/**
+	 * 保存上传文件
+	 * 
+	 * @param filename
+	 *            the original filename in the client's filesystem.
+	 * @param is
+	 *            上传文件流
+	 * @return web中的文件访问路径
+	 */
+	private String uploadFile(String filename, InputStream is) {
+		int pos = filename.lastIndexOf('.');
+		if (pos == -1) {
+			throw new RuntimeException("文件名格式错误，不能读取扩展名");
+		}
+		String ext = filename.substring(pos + 1);
+		String subPath = FileUtils.generateSubPathStr();
+		String path = uploadFilePath + subPath;
+		String name = FileUtils.generateFilename() + "." + ext;
+		File folder = new File(path);
+		try {
+			if (!folder.exists()) {
+				org.apache.commons.io.FileUtils.forceMkdir(folder);
+			}
+			org.apache.commons.io.FileUtils.copyInputStreamToFile(is, new File(folder, name));
+			return showFilePath + subPath + name;
+		} catch (IOException e) {
+			throw new RuntimeException("保存上传文件时出现错误", e);
+		}
+	}
+
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String create(@Validated @ModelAttribute("entity") SysNews sysNews, Model model) {
-		//  获取登录用户，判断其是否拥有查看新闻的权限
-		LoginInfo info = (LoginInfo)SecurityUtils.getSubject().getPrincipal();
-		if(userService.hasPermission(info.getId())) {
+		// 获取登录用户，判断其是否拥有查看新闻的权限
+		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
+		if (userService.hasPermission(info.getId())) {
 			newsService.save(sysNews);
 			return "redirect:/sys_new";// 去往首页
-		}else {
+		} else {
 			return "redirect:/logout";
 		}
 	}
-	
+
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(@Validated @ModelAttribute("entity") SysNews sysNews, Model model) {
-		//  获取登录用户，判断其是否拥有查看新闻的权限
-		LoginInfo info = (LoginInfo)SecurityUtils.getSubject().getPrincipal();
-		if(userService.hasPermission(info.getId())) {
+		// 获取登录用户，判断其是否拥有查看新闻的权限
+		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
+		if (userService.hasPermission(info.getId())) {
 			newsService.save(sysNews);
 			return "redirect:/sys_new";// 去往首页
-		}else {
+		} else {
 			return "redirect:/logout";
 		}
 	}
-	
+
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	@ResponseBody
 	public JSONObject update(@RequestParam(value = "id", required = false) Long id, Model model) {
-		//获取登录用户，判断其是否拥有查看新闻的权限
-		LoginInfo info = (LoginInfo)SecurityUtils.getSubject().getPrincipal();
-		if(userService.hasPermission(info.getId())) {
+		// 获取登录用户，判断其是否拥有查看新闻的权限
+		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
+		if (userService.hasPermission(info.getId())) {
 			SysNews news = newsService.findById(id);
-			if(news != null) {
+			if (news != null) {
 				news.setRemoved(true);
 				newsService.save(news);
 			}
 			return JsonUtils.getSuccessJSONObject();
-		}else {
+		} else {
 			return JsonUtils.getFailJSONObject("没有操作权限");
 		}
 	}
-	
+
 }
