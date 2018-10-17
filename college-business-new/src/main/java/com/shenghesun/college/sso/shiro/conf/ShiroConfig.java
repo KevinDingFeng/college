@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+import com.shenghesun.college.filter.CrossFilter;
 import com.shenghesun.college.sso.redis.realization.CustomRedisCacheManager;
 import com.shenghesun.college.sso.redis.realization.CustomRedisSessionDAO;
 import com.shenghesun.college.sso.shiro.realization.CustomSessionManager;
@@ -54,6 +55,7 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/login", "anon");//登录 登出
 		filterChainDefinitionMap.put("/logout", "anon");
 		filterChainDefinitionMap.put("/encrypt", "anon");//密码加密
+		filterChainDefinitionMap.put("/qa/**", "anon");//密码加密
 //		filterChainDefinitionMap.put("/**", "anon");
 		filterChainDefinitionMap.put("/**", "authc");
 
@@ -65,6 +67,11 @@ public class ShiroConfig {
 		shiroFilterFactoryBean.setFilters(filters);
 
 		return shiroFilterFactoryBean;
+	}
+	@Bean
+	public Filter crossDomainFilter() {
+		CrossFilter cdf = new CrossFilter() ;
+		return cdf;
 	}
 
 	/**
