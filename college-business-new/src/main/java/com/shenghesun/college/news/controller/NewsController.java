@@ -34,7 +34,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.shenghesun.college.news.entity.SysNews;
 import com.shenghesun.college.news.service.SysNewsService;
@@ -239,7 +238,7 @@ public class NewsController {
 
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	@ResponseBody
-	public JSONObject update(@RequestParam(value = "id", required = false) Long id, Model model) {
+	public JSONObject update(@RequestParam(value = "id", required = false) Long id) {
 		// 获取登录用户，判断其是否拥有查看新闻的权限
 		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
 		if (userService.hasPermission(info.getId())) {
@@ -253,5 +252,21 @@ public class NewsController {
 			return JsonUtils.getFailJSONObject("没有操作权限");
 		}
 	}
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public String view(@RequestParam(value = "id", required = false) Long id, Model model) {
+		// 获取登录用户，判断其是否拥有查看新闻的权限
+		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
+		if (userService.hasPermission(info.getId())) {
+			SysNews news = newsService.findById(id);
+			if(news == null) {
+				news = new SysNews();
+			}
+			model.addAttribute("entity", news);
+			return "news/view";
+		} else {
+			return "redirect:/logout";
+		}
+	}
+	
 
 }

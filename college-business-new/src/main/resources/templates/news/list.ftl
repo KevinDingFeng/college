@@ -125,9 +125,7 @@
                 	<#-- 查看、编辑、删除 -->
                   <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                    	<#--
-                      <a href="/sys_new/view?id=${em.id}" class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-archive"></span> 查看</a>
-                      	-->
+                      <a href="/sys_new/view?id=${em.id}" target="_blank" class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-archive"></span> 查看</a>
                       <a href="/sys_new/form?id=${em.id}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</a>
                       <a href="javascript:void(0);" onclick="removeNews(${em.id})" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</a>
                     </div>
