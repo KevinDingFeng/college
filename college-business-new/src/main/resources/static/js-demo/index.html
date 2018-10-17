@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title>College Business</title>
+</head>
+<body>
+	<script src="js/data.js"></script>
+	<script src="js/operation.js"></script>
+	<script src="js/jquery-3.2.1.js"></script>
+
+	<script>
+console.log("所有问答信息");
+console.log(qa);
+console.log("遍历");
+for(var i = 0 ; i < qa.length ; i ++){
+	var qaOne = qa[i];
+	console.log(qaOne.gid + "  " + qaOne.uuid + " " + qaOne.q + "  " + qaOne.a);
+}
+console.log("根据 keyword 全文搜索结果");
+var result = [];
+var keyword = "3";
+for(var i = 0 ; i < qa.length ; i ++){
+	var qaOne = qa[i];
+	if(qaOne.q.indexOf(keyword) > -1 || qaOne.a.indexOf(keyword) > -1){
+		result[result.length] = qaOne;
+	}
+}
+for(var i = 0 ; i < result.length ; i ++){
+	var qaOne = result[i];
+	console.log(qaOne.gid + "  " + qaOne.uuid + " " + qaOne.q + "  " + qaOne.a);
+}
+console.log("获取排名前三的问题编号");
+function find(){
+	$.ajax({
+		type: 'GET',
+		url: "http://localhost:8080/qa/find",
+		data: {},
+		success: function(res){
+			console.log(res);
+			if(res.code == 200){
+				console.log(res.data);
+			}else{
+				alert(res.data);
+			}
+		}
+	});
+}
+find();   	
+console.log("增加统计数据");
+function add(uuid){
+	$.ajax({
+		type: 'POST',
+		url: "http://localhost:8080/qa/add/" + uuid,
+		data: {},
+		success: function(res){
+			console.log(res);
+			if(res.code == 200){
+				console.log(res.data);
+			}else{
+				alert(res.data);
+			}
+		}
+	});
+}
+add("21c8bfbc7cff4916afb9f8d7c35a8ccd");
+
+	</script>
+</body>
+</html>
