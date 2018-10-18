@@ -1,16 +1,16 @@
 server:
-	port: 8081
+    port: 5566
 spring:
     datasource:
-        url: jdbc:mysql://192.168.3.7:3306/business_college_dev?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT&&useSSL=false
-        username: root
-        password: Root123!
+        url: jdbc:mysql://127.0.0.1:3306/business_college_test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT&&useSSL=false
+        username: business
+        password: Business@business
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
 
     jpa:
         database: mysql
-        show-sql: true
+        show-sql: false
         hibernate:
             ddl-auto: update
     freemarker:
@@ -26,10 +26,10 @@ spring:
         template-loader-path: classpath:/templates/
         templateEncoding: UTF-8
     redis:
-        host: 47.99.134.58
+        host: 127.0.0.1
         port: 6379
         timeout: 0
 file:
     path:
         show: /f/
-        upload: /home/kevin/temp/
+        upload: /home/hetong/temp/business/
