@@ -50,6 +50,7 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/logout", "logout");
 		// 配置不会被拦截的链接 顺序判断
 		filterChainDefinitionMap.put("/assets/**", "anon");//静态文件
+		filterChainDefinitionMap.put("/website/**", "anon");//静态文件
 		filterChainDefinitionMap.put("/index.html", "anon");//启动确认文件
 		filterChainDefinitionMap.put("/f/**", "anon");//获取资源
 		filterChainDefinitionMap.put("/login", "anon");//登录 登出
