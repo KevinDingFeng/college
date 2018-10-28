@@ -29,7 +29,7 @@ spring:
         host: r-m5e38585ed451b54.redis.rds.aliyuncs.com
         port: 6379
         password: Hejun1q2w3e
-        dbIndex: 1
+        database: 1
         timeout: 0
 file:
     path:

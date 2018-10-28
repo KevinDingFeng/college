@@ -26,8 +26,8 @@ public class RedisConf {
     private int port;
     @Value("${spring.redis.password}")
     private String password;
-    @Value("${spring.redis.dbIndex}")
-    private int dbIndex;
+    @Value("${spring.redis.database}")
+    private int database;
     @Value("${spring.redis.timeout}")
     private int timeout;
     @Bean
@@ -52,7 +52,7 @@ public class RedisConf {
         factory.setPort(port);
         factory.setTimeout(timeout); //设置连接超时时间
         factory.setPassword(password);
-        factory.setDatabase(dbIndex);
+        factory.setDatabase(database);
         return factory;
     }
     @Bean
