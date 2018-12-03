@@ -26,6 +26,13 @@
 </head>
 <style>
 .modal-dialog{margin:52ps auto;}
+#box{width: 100px;height: 100px;border: 2px solid #858585;}
+.imgshow{width: 100%;height: 100%;}
+#pox{width: 100px;height: 50px;overflow: hidden;}
+.btn_sty{border:none;background-color:#fff;}
+.inpt_cc{border:none;}
+.btn_cc{position:relative;}
+.cc_sty{position:absolute;top: 6px;left: 119px;}
 </style>
 <body>
 <!--[if lte IE 9]>
@@ -98,20 +105,48 @@
         <li class="am-active"><a href="#tab1">新闻信息</a></li>
       </ul>
       <#if entity.id??>
-    <form method="post" class="am-form" action="/sys_new/update" id="editNewsForm">
+    <form method="post" class="am-form" action="/sys_new/update" id="editNewsForm" enctype="multipart/form-data">
       <input type="hidden" name="id" value="${entity.id}" />
       <#else>
-	<form method="post" class="am-form" action="/sys_new/create" id="editNewsForm">
+	<form method="post" class="am-form" action="/sys_new/create" id="editNewsForm" enctype="multipart/form-data">
       </#if>
       	<div class="am-tabs-bd">
         	<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+        	   <#--
+        	   <div class="am-u-sm-4 am-u-md-3 am-text-center btn_cc">
+                    <div class="am-g am-margin-top">
+                        <div id="box"><img class="imgshow" id="imgshow2" src="${imgshow2!}" alt=""/></div>
+                        <div class="img_bor" id="pox">
+                            <input type="file" id="informationImg2" class="form-control photo_bj create-form-control inpt_cc" name="informationImg2" accept="image/*">
+                            <div class="cc_sty">
+                                <button type="button" onclick="deleteImg('2')"class="btn_sty"><i class="am-icon-remove"></i></button>
+                            </div>
+                            <input type="hidden" id="deleteImageFlag2" name="deleteImageFlag2" >
+                        </div>
+                    </div>
+                </div>
+        	   -->
             	<div class="am-g am-margin-top">
               		<div class="am-u-sm-4 am-u-md-2 am-text-right">标题</div>
               		<div class="am-u-sm-8 am-u-md-4">
                 		<input type="text" class="am-input-sm" name="title" value="${entity.title!}">
               		</div>
-              		<div class="am-hide-sm-only am-u-md-6">*必填</div>
+              		<div class="am-hide-sm-only am-u-md-6"></div>
             	</div>
+            	<div class="am-g am-margin-top">
+                    <div class="am-u-sm-4 am-u-md-2 am-text-right">头图</div>
+                    <div class="am-u-sm-8 am-u-md-4">
+                        <input type="file" id="headImgFileInput" name="headImg" accept="image/png, image/jpeg, image/jpg" />
+                        <p class="am-form-help">请选择要上传的文件...</p>
+                    </div>
+                    <div class="am-hide-sm-only am-u-md-6"></div>
+                </div>
+                <div class="am-g am-margin-top-sm">
+                    <div class="am-u-sm-12 am-u-md-2 am-text-right admin-form-text">摘要</div>
+                    <div class="am-u-sm-12 am-u-md-10">
+                        <textarea rows="5" name="abstractText" >${entity.abstractText!}</textarea>
+                    </div>
+                </div>
             	<div class="am-g am-margin-top-sm">
               		<div class="am-u-sm-12 am-u-md-2 am-text-right admin-form-text">内容</div>
               		<div class="am-u-sm-12 am-u-md-10">
@@ -119,6 +154,9 @@
 						<input type="hidden" id="summernoteContent" required="required" value="${(entity.content!'')?html}" />
 					</div>
               	</div>
+              	<#if errorMessage?? >
+              	<label>${errorMessage}</label><br />
+              	</#if>
 		        <div class="am-margin">
 					<button type="button" onclick="iframeCallback('editNewsForm')" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
 				</div>

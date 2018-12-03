@@ -23,11 +23,27 @@ public class SysNews extends BaseEntity {
 	private String title;
 	
 	/**
+	 * 列表中的图片
+	 */
+	@Column(nullable = false, length = 125)
+	private String headImg;
+	
+	/**
+	 * 摘要
+	 */
+	@Column(nullable = false, length = 512)
+	private String abstractText;
+	
+	/**
 	 * 内容
 	 */
 	@Column(nullable = false, length = 2048)
 	private String content;
 	
+	/**
+	 * 是否已发布
+	 */
+	private boolean released = false;
 	
 	/**
 	 * 是否已删除

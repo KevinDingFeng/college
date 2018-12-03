@@ -24,7 +24,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.shenghesun.college.news.entity.SysNews;
 import com.shenghesun.college.news.service.SysNewsService;
@@ -54,7 +55,7 @@ public class NewsController {
 	 */
 	@InitBinder("entity")
 	private void initBinder(ServletRequestDataBinder binder, HttpServletRequest req) {
-		List<String> fields = new ArrayList<String>(Arrays.asList("title", "content"));
+		List<String> fields = new ArrayList<String>(Arrays.asList("title", "content", "abstractText"));
 		switch (req.getMethod().toLowerCase()) {
 		case "post": // 新增 和 修改
 			binder.setAllowedFields(fields.toArray(new String[fields.size()]));
@@ -95,7 +96,7 @@ public class NewsController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
 	public String index(@RequestParam(value = "pageNum", required = false) Integer pageNum, Model model) {
 		// 获取登录用户，判断其是否拥有查看新闻的权限
 		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
@@ -168,7 +169,7 @@ public class NewsController {
 		if (userService.hasPermission(info.getId())) {
 			if (uploadFile.getSize() != 0L) {
 				try {
-					return this.uploadFile(uploadFile.getOriginalFilename(), uploadFile.getInputStream());
+					return showFilePath + this.uploadFile(uploadFile.getOriginalFilename(), uploadFile.getInputStream());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -206,29 +207,81 @@ public class NewsController {
 				org.apache.commons.io.FileUtils.forceMkdir(folder);
 			}
 			org.apache.commons.io.FileUtils.copyInputStreamToFile(is, new File(folder, name));
-			return showFilePath + subPath + name;
+			return subPath + name;
 		} catch (IOException e) {
 			throw new RuntimeException("保存上传文件时出现错误", e);
 		}
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Validated @ModelAttribute("entity") SysNews sysNews, Model model) {
+	public String create(@ModelAttribute("entity") SysNews sysNews, BindingResult result, 
+			@RequestParam(value = "headImg", required = false) MultipartFile headImg, Model model) {
 		// 获取登录用户，判断其是否拥有查看新闻的权限
 		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
 		if (userService.hasPermission(info.getId())) {
+			if(result.hasErrors()) {
+				return this.returnErrorForm(sysNews, "请检查信息内容", model);
+			}
+			//创建时 headImg 不可以为空
+			if(headImg == null || StringUtils.isEmpty(headImg.getOriginalFilename())) {
+				return this.returnErrorForm(sysNews, "头图为必填项", model);
+			}
+			//判断 title \ abstractText \ content 为非空
+			if(StringUtils.isEmpty(sysNews.getTitle())) {
+				return this.returnErrorForm(sysNews, "标题为必填项", model);
+			}
+			if(StringUtils.isEmpty(sysNews.getAbstractText())) {
+				return this.returnErrorForm(sysNews, "摘要为必填项", model);
+			}
+			if(StringUtils.isEmpty(sysNews.getContent())) {
+				return this.returnErrorForm(sysNews, "内容为必填项", model);
+			}
+			try {
+				sysNews.setHeadImg(this.uploadFile(headImg.getOriginalFilename(), headImg.getInputStream()));
+			} catch (Exception e) {
+				e.printStackTrace();
+				return this.returnErrorForm(sysNews, "上传头图有异常", model);
+			}
 			newsService.save(sysNews);
 			return "redirect:/sys_new";// 去往首页
 		} else {
 			return "redirect:/logout";
 		}
 	}
+	private String returnErrorForm(SysNews sysNews, String message, Model model) {
+		model.addAttribute("errorMessage", message);
+		model.addAttribute("entity", sysNews);
+		return "news/form";
+	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(@Validated @ModelAttribute("entity") SysNews sysNews, Model model) {
+	public String update(@ModelAttribute("entity") SysNews sysNews, BindingResult result, 
+			@RequestParam(value = "headImg", required = false) MultipartFile headImg, Model model) {
 		// 获取登录用户，判断其是否拥有查看新闻的权限
 		LoginInfo info = (LoginInfo) SecurityUtils.getSubject().getPrincipal();
 		if (userService.hasPermission(info.getId())) {
+			if(result.hasErrors()) {
+				return this.returnErrorForm(sysNews, "请检查信息内容", model);
+			}
+			//判断 title \ abstractText \ content 为非空
+			if(StringUtils.isEmpty(sysNews.getTitle())) {
+				return this.returnErrorForm(sysNews, "标题为必填项", model);
+			}
+			if(StringUtils.isEmpty(sysNews.getAbstractText())) {
+				return this.returnErrorForm(sysNews, "摘要为必填项", model);
+			}
+			if(StringUtils.isEmpty(sysNews.getContent())) {
+				return this.returnErrorForm(sysNews, "内容为必填项", model);
+			}
+			//修改时 headImg 可以为空
+			if(headImg != null && !StringUtils.isEmpty(headImg.getOriginalFilename())) {
+				try {
+					sysNews.setHeadImg(this.uploadFile(headImg.getOriginalFilename(), headImg.getInputStream()));
+				} catch (Exception e) {
+					e.printStackTrace();
+					return this.returnErrorForm(sysNews, "上传头图有异常", model);
+				}
+			}
 			newsService.save(sysNews);
 			return "redirect:/sys_new";// 去往首页
 		} else {

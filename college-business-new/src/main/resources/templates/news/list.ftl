@@ -178,7 +178,7 @@
                   	<li>...</li>
                   	</#if>
                   </#if>
-                  <#if page.totalPages == (pageNum + 1)>
+                  <#if page.totalPages == 0 || page.totalPages == (pageNum + 1)>
 				  <li class="am-disabled"><a href="javascript:;">»</a></li>
                   <#else>
                   <li><a href="javascript:;" onclick="doPages(${pageNum + 1})">»</a></li>

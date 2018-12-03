@@ -104,6 +104,17 @@
       <h4 class="am-article-meta blog-meta">${entity.creation}</h4>
       <div class="am-g blog-content">
         <div class="am-u-lg-7">
+            <img src="/f/${entity.headImg!}" />
+        </div>
+      </div>
+      <div class="am-g blog-content">
+        <div class="am-u-lg-7">
+          ${(entity.abstractText!'')}
+        </div>
+      </div>
+      <hr />
+      <div class="am-g blog-content">
+        <div class="am-u-lg-7">
           ${(entity.content!'')}
         </div>
       </div>
