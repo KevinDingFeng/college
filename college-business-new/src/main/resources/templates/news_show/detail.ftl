@@ -180,19 +180,11 @@
                 </div>
             </div>
         </main>
-        
-                <footer class="foot_info_met_11_1 p-y-20" m-id="63" m-type="foot">
+        <footer class="foot_info_met_11_1 p-y-20" m-id="63" m-type="foot">
             <div class="container text-xs-center">
-                            <p class="m-b-0">我的网站 版权所有 2008-2014 湘ICP备8888888</p>
-                                    <p class="m-b-0">本页面内容为网站演示数据，前台页面内容都可以在后台修改。</p>
-                                                            <div class="powered_by_metinfo">
-                    Powered&nbsp;by&nbsp;
-                    <a href="http://www.MetInfo.cn/#copyright" target="_blank" title="$lang_Info1">MetInfo</a>
-                    &nbsp;6.1.3        </div>
-        <!--简繁体切换-->
-                                <!--简繁体切换-->
-        <!--多语言-->
-                    <!--多语言-->
+                <p class="m-b-0">京ICP备11029302号</p>
+                <p class="m-b-0">北京和君商学院在线科技股份有限公司</p>
+                <div class="powered_by_metinfo">联系地址：北京朝阳区北苑路86号院E区213号楼</div>
             </div>
         </footer>
 <!-- 右边按钮 -->

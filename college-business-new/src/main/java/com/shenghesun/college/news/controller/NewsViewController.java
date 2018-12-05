@@ -52,7 +52,7 @@ public class NewsViewController {
 
 	private Pageable getListPageable(Integer pageNum) {
 		Sort sort = new Sort(Direction.DESC, "creation");
-		Pageable pageable = new PageRequest(pageNum, 1, sort);
+		Pageable pageable = new PageRequest(pageNum, 50, sort);
 		return pageable;
 	}
 

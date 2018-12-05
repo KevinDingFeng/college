@@ -31,13 +31,13 @@ public class SysNews extends BaseEntity {
 	/**
 	 * 摘要
 	 */
-	@Column(nullable = false, length = 512)
+	@Column(nullable = false,columnDefinition="MEDIUMTEXT")
 	private String abstractText;
 	
 	/**
 	 * 内容
 	 */
-	@Column(nullable = false, length = 2048)
+	@Column(nullable = false,columnDefinition="MEDIUMTEXT")
 	private String content;
 	
 	/**
