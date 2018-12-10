@@ -32,5 +32,9 @@ public class SysUserService {
 		SysUser user = this.findById(id);
 		return user == null ? false : "System".equals(user.getSysId());
 	}
+
+	public SysUser save(SysUser entity) {
+		return sysUserDao.save(entity);
+	}
 	
 }

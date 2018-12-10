@@ -1,0 +1,707 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>和君商学院</title>
+	<link rel="icon" href="photos/LOGO.png">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="renderer" content="webkit" />
+	<meta name="force-rendering" content="webkit" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/color.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+</head>
+
+<body>
+	<!-- pc端header -->
+	<div class="theme-layout">
+		<header style="position:fixed" class="scroll-header">
+			<div class="container">
+				<div class="logo"><a href="#" title=""><img style="padding-top:10px" src="photos/newlogo.png" alt="" /></a></div>
+				<div class="header-wrap">
+					<div class="topbar" style="padding: 15px 0 0px 100px;">
+						<div class="registration">
+							<a href="#" onclick="javascript:window.open('https://mp.weixin.qq.com/s?__biz=MzUxNTI5OTM5Mw==&mid=2247486803&idx=1&sn=b3af45de79e2fd1ac1049df547304589&chksm=f9b98c7dcece056bd898f4f9fe9eec635ed1c4862077630eb565aa9407d61f55524431558f09&token=858448508&lang=zh_CN#rd')"
+							 class="ac" style="margin-top:10px" title="">招生简章</a>
+							<!-- https://mp.weixin.qq.com/s?__biz=MzUxNTI5OTM5Mw==&mid=2247486803&idx=1&sn=b3af45de79e2fd1ac1049df547304589&chksm=f9b98c7dcece056bd898f4f9fe9eec635ed1c4862077630eb565aa9407d61f55524431558f09&token=858448508&lang=zh_CN#rd -->
+							<span></span>
+							<a href="#" onclick="javascript:window.open('https://mp.weixin.qq.com/s?__biz=MzUxNTI5OTM5Mw==&mid=2247486803&idx=2&sn=e5a9775b1f57c9d25570b8f55bd5d636&chksm=f9b98c7dcece056b4d6c585a74dc5bc13bc0facb6bca97b65893af4bd0a34a082c753081323d&token=858448508&lang=zh_CN#rd')"
+							 class="ac" style="margin-top:10px" title="">和君书单</a>
+							<span></span>
+							<a href="#" onclick="javascript:window.open('http://student.hejunedu.com/')" class="ac" style="margin-top:10px"
+							 title="">学习系统</a>
+							<a class="button active" id="net-ent" style="background:#a51c30;padding: 0 20px;min-width: 0;border-left:none;margin-top:5px"
+							 href="#" onclick="javascript:window.open('http://s.ehejun.com/student/step/index')" title="">网申入口 <i></i></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+		<!-- Header -->
+		<!-- 移动端header -->
+		<div class="phoneheader" style="position:fixed">
+			<div class="container" style="height:100%">
+				<div class="logo2" onclick="javascript:window.open('index.html')" style="float:left; height:50px; width:230px; background:url(photos/logo2.png)no-repeat left center; background-size:70%; margin-top:10px"></div>
+
+				<!-- <img style="margin-top:17px;width: 70%;height: auto;" src="photos/logo2.png" alt="" /> -->
+				<!-- <div class="header-wrap" style="float:right;height: 30px; width: 30px;margin-top: 21px">
+						<div class="header-right">
+	
+						</div>
+					</div> -->
+
+				<div class="header-wrap" style="float:right;height: 30px; width: 30px;margin-top: 21px">
+					<div class="header-right">
+
+					</div>
+				</div>
+			</div>
+			<div class="select-list">
+				<ul>
+					<!-- <li><i></i>首页</li>
+					<li><i></i>招生简章</li>
+					<li><i></i>和君书单</li>
+					<li><i></i>学习系统</li> -->
+					<li onclick="javascript:window.open('index.html')"><i></i>首页</li>
+					<li onclick="javascript:window.open('https://mp.weixin.qq.com/s?__biz=MzUxNTI5OTM5Mw==&mid=2247486803&idx=1&sn=b3af45de79e2fd1ac1049df547304589&chksm=f9b98c7dcece056bd898f4f9fe9eec635ed1c4862077630eb565aa9407d61f55524431558f09&token=858448508&lang=zh_CN#rd')"><i></i>招生简章</li>
+					<li onclick="javascript:window.open('https://mp.weixin.qq.com/s?__biz=MzUxNTI5OTM5Mw==&mid=2247486803&idx=2&sn=e5a9775b1f57c9d25570b8f55bd5d636&chksm=f9b98c7dcece056b4d6c585a74dc5bc13bc0facb6bca97b65893af4bd0a34a082c753081323d&token=858448508&lang=zh_CN#rd')"><i></i>和君书单</li>
+					<li onclick="javascript:window.open('http://student.hejunedu.com/')"><i></i>学习系统</li>
+				</ul>
+			</div>
+		</div>
+		<div class="block t-header" style="padding:35px 0"></div>
+		<!-- Responsive Header -->
+
+		<section>
+			<div class="block no-padding ques12">
+				<img src="photos/banner2.jpg" style="width:100%;height:auto" alt="">
+				<img src="photos/phonebanner.png" style="width:100%;height:auto" alt="">
+				<div class="ccl" onclick="javascript:window.open('http://s.ehejun.com/student/step/index')">网 申 入 口</div>
+			</div>
+		</section>
+
+		<!-- 有这样一所商学院 -->
+		<section>
+			<div class="block sxy">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="title">
+								<h2>有这样一所商学院...</h2>
+								<!-- <span id="red">基本内容</span> -->
+								<!-- <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut in orci aliquam, ac vulputa leo vehicula. Mauris porttit magna tellus. Vivamus sagittis et nunc.</p> -->
+							</div>
+
+							<div class="easyedu-services">
+								<div class="row">
+									<!-- <div class="col-md-4">
+										<div class="edu-service">
+											<img src="photos/icon1.png" alt="" />
+											<h3>基本情况</h3>
+											<p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和君商学院，隶属于和君集团。他的前身，是成立于2003年的王明夫投资银行私塾。他培养的名校学子、职场精英与企业家人才，目前已
+												累计逾万名。他们共同的特点，是有头脑有理想、敢闯荡敢拼搏。如今，它每年在全国及海外，招收3000-4000名青年人才。既有跨届跨界的校友，
+												又有全国跨届跨界的校友。
+											</p>
+										</div>
+									</div> -->
+									<!-- <div class="col-md-4">
+										<div class="edu-service">
+											<img src="photos/icon2.png" alt="" />
+											<h3>教学体系</h3>
+											<p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和君商学院，学制为一年一届。以“国势、产业、管理、资本”为框架，全年共十堂的必修课，构成了它的核心课程体系。虽然它的学费不高，但三次笔试、一次面试，入学后的
+												作业、阅读、演讲，让他的入学门槛和毕业门槛，都挺高。它的老师，多数拥有名校博士学位，长期打拼在商业一线，有高度、有深度、有洞见、有实战。
+											</p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="edu-service">
+											<img src="photos/icon3.png" alt="" />
+											<h3>核心文化</h3>
+											<p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和君商学院相信，人生就像是睡莲，成功是浮在水面上的花，决定其美丽绽放的，是水面下那些看不见的根和本。莲花初绽，动人心魄，
+												观者如云，岂知绚烂芳华的背后，市场就的寂寞等待和生根固本。和君商学院相信，态度决定命运、气度决定格局，底蕴的厚度决定事业的高度。人之态度、
+												气度、厚度，犹如莲之根本；“三度”修炼，日积月累，功到自然成。
+											</p>
+										</div>
+									</div> -->
+
+									<div class="col-md-12">
+										<div class="edu-service line-cloud">
+											<img style="width:80%;float:left" src="photos/cloud.png" alt="">
+											<img style="margin-top:-200px;width:100%;height:auto" src="photos/line.png" alt="">
+										</div>
+										<div class="edu-service poline-cloud">
+											<img style="width:80%;float:left" src="photos/phone-cloud.png" alt="">
+											<img style="margin-top:-60px;width:100%;height:auto" src="photos/phone-line.png" alt="">
+										</div>
+									</div>
+
+
+
+
+
+
+								</div>
+							</div>
+							<!-- <div class="button-set nj">
+								<img style="width:auto;height:100%" src="photos/nj.png" alt="">
+								<img style="width:100%;height:auto" src="photos/nj2.png" alt="">
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 十二届，欢迎你 -->
+		<section class="pc-12">
+			<div class="block gray f6" style="padding-top:64px">
+				<div class="container">
+					<div class="row">
+						<div class="title">
+							<h2>十二届，欢迎你！</h2>
+							<!-- <span id="red">申请流程</span> -->
+						</div>
+						<div class="col-md-7">
+							<div class="edu-tabs">
+								<div class="row">
+									<div class="col-md-9  ccc">
+
+										<div class="tab-carousel">
+
+											<!-- <div style="overflow: hidden" > -->
+											<div data-hash="tab1" class="tab-content">
+												<h4>注册</h4>
+
+												<p>通过本页面首页登陆“网申入口”，
+													<br />或在移动端通过和君商学院微信公众号，按提示注册并填写相关资料。</p>
+											</div>
+											<div data-hash="tab2" class="tab-content">
+												<h4>笔试</h4>
+
+												<p>此环节共计三轮在线考试，考试范围包括：
+													和君书单、实操案例、《三度修炼》部分篇章、
+													《管理思想史》与《经济学》等。<br/>
+													符合免笔试条件的申请者可申请免笔试，<br/>但我们鼓励所有同学参加笔试，这是一次非常有价值的学习机会。<br />笔试与面试同步进行，与面试是否完成无关。
+												</p>
+											</div>
+											<div data-hash="tab3" class="tab-content">
+												<h4>面试</h4>
+
+												<p>每个地区会组织若干场面试，请关注网申系统通知，<br />尽早安排面试时间。
+													面试与笔试同步进行，与笔试是否完成无关。
+
+												</p>
+
+											</div>
+											<div data-hash="tab4" class="tab-content">
+												<h4>章程</h4>
+
+												<p>在正式开始学习前，请学习《和君商学院第十二届运行章程》，<br />了解全年学习要求，以便你更从容地安排一年的学习之旅。</p>
+
+											</div>
+											<div data-hash="tab5" class="tab-content">
+												<h4>缴费</h4>
+
+												<p>第十二届学费为人民币12000元/人，2019年1月31日前录取的同学，可按8.5折缴交学费（即人民币10200元/人）。<br />
+													同时，学院设立公益助学计划，申请公益助学且获批准者，<br />可全额或半额减免学费。</p>
+
+											</div>
+											<div data-hash="tab6" class="tab-content">
+												<h4>录取</h4>
+
+												<p>完成缴费，并完成身份和证书的核实后，即可收到录取通知书，<br />开启为期一年的新征程！祝愿你，顺利毕业！</p>
+
+											</div>
+										<!-- </div> -->
+										</div>
+										<div class="zzc"></div>
+
+									</div>
+									<div class="col-md-3">
+										<div class="selectors-wrapper">
+											<div class="tabs-selectors">
+												<div class="selectors-inner">
+													<a class="url active" href="#tab1" title="">注册</a>
+													<a class="url" href="#tab2" title="">笔试</a>
+													<a class="url" href="#tab3" title="">面试</a>
+													<a class="url" href="#tab4" title="">章程</a>
+													<a class="url" href="#tab5" title="">缴费</a>
+													<a class="url" href="#tab6" title="">录取</a>
+												</div>
+											</div><!-- Tabs Selectors -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="explore-edu" style="margin-top:65px">
+								<!-- <i>Explore What Our Institute Has To Offer</i> -->
+								<!-- <h2>只要你未满<i style="color:#a51c30">40</i><span>Since <i style="color:#a51c30">1920</i></span></h2> -->
+
+								<h2>在<i style="color:#a51c30">商业领域</i>有长期发展的志向，</h2>
+								<h2>意志坚强、品行优良，</h2>
+								<h2>热爱祖国、热爱生活，</h2>
+								<h2><i style="color:#a51c30">你，</i>就是我们要找的<i style="color:#a51c30">年轻人！</i></h2>
+								<h2 style="padding:15px 0"></h2>
+								<a class="button active" style="background:#a51c30;font-size:18px;padding: 10px 20px" href="#" onclick="javascript:window.open('http://s.ehejun.com/student/step/index')"
+								 title="">网 申 入 口</a>
+							</div><!-- Explore Edu -->
+						</div>
+						<div class="col-md-12">
+							<div class="gap"></div>
+							<div class="easyedu-counter">
+								<div class="row">
+									<div class="col-md-3">
+										<div class="counter">
+											<img src="photos/shizhong.png" alt="" />
+											<div class="counter-inner">
+												<strong>2018.11.1</strong>
+												<span>十二届招生正式启动</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="counter">
+											<img src="photos/shizhong.png" alt="" />
+											<div class="counter-inner">
+												<strong>2018.12.1</strong>
+												<span>各地招生面试启动</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="counter">
+											<img src="photos/shizhong.png" alt="" />
+											<div class="counter-inner">
+												<strong>2019.1.31</strong>
+												<span>首批录取截止日期</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="counter">
+											<img src="photos/shizhong.png" alt="" />
+											<div class="counter-inner">
+												<strong>2019.4.30</strong>
+												<span>十二届招生截止</span>
+											</div>
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="phone-12">
+				<div class="block gray f6" style="padding-top:64px">
+					<div class="container">
+						<div class="row">
+							<div class="title">
+								<h2>十二届，欢迎你！</h2>
+								<!-- <span id="red">申请流程</span> -->
+							</div>
+							<div class="col-md-7">
+								<div class="edu-tabs">
+									<div class="row">
+										<div class="col-md-9  ccc">
+	
+											<div class="tab-carousel">
+	
+	
+	
+												<div data-hash="tab1" class="tab-content">
+													<h4>注册</h4>
+	
+													<p>通过本页面首页登陆“网申入口”，
+														<br />或在移动端通过和君商学院微信公众号，<br />
+														按提示注册并填写相关资料。</p>
+												</div>
+												<div data-hash="tab2" class="tab-content">
+													<h4>笔试</h4>
+	
+													<p>此环节共计三轮在线考试，考试范围包括：<br />
+														和君书单、实操案例、《三度修炼》部分篇章、<br />
+														《管理思想史》与《经济学》等。<br/>
+														符合免笔试条件的申请者可申请免笔试，<br/>
+														但我们鼓励所有同学参加笔试，<br />
+														这是一次非常有价值的学习机会。<br />笔试与面试同步进行，与面试是否完成无关。
+													</p>
+												</div>
+												<div data-hash="tab3" class="tab-content">
+													<h4>面试</h4>
+	
+													<p>每个地区会组织若干场面试，<br/>请关注网申系统通知，<br />尽早安排面试时间。
+														面试与笔试同步进行，<br />与笔试是否完成无关。
+	
+													</p>
+	
+												</div>
+												<div data-hash="tab4" class="tab-content">
+													<h4>章程</h4>
+	
+													<p>在正式开始学习前，<br />请学习《和君商学院第十二届运行章程》，<br />了解全年学习要求，<br />以便你更从容地安排一年的学习之旅。</p>
+	
+												</div>
+												<div data-hash="tab5" class="tab-content">
+													<h4>缴费</h4>
+	
+													<p>第十二届学费为人民币12000元/人，<br />2019年1月31日前录取的同学，<br />可按8.5折缴交学费（即人民币10200元/人）。<br />
+														同时，学院设立公益助学计划，<br />申请公益助学且获批准者，<br/>可全额或半额减免学费。</p>
+	
+												</div>
+												<div data-hash="tab6" class="tab-content">
+													<h4>录取</h4>
+	
+													<p>完成缴费，并完成身份和证书的核实后，<br/>即可收到录取通知书，开启为期一年的新征程！<br/>祝愿你，顺利毕业！</p>
+	
+												</div>
+												
+	
+	
+											</div>
+											<div class="zzc"></div>
+	
+										</div>
+										<div class="col-md-3">
+											<div class="selectors-wrapper">
+												<div class="tabs-selectors">
+													<div class="selectors-inner">
+														<a class="url active" href="#tab1" title="">注册</a>
+														<a class="url" href="#tab2" title="">笔试</a>
+														<a class="url" href="#tab3" title="">面试</a>
+														<a class="url" href="#tab4" title="">章程</a>
+														<a class="url" href="#tab5" title="">缴费</a>
+														<a class="url" href="#tab6" title="">录取</a>
+													</div>
+												</div><!-- Tabs Selectors -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5">
+								<div class="explore-edu" style="margin-top:65px">
+									<!-- <i>Explore What Our Institute Has To Offer</i> -->
+									<!-- <h2>只要你未满<i style="color:#a51c30">40</i><span>Since <i style="color:#a51c30">1920</i></span></h2> -->
+	
+									<h2>在<i style="color:#a51c30">商业领域</i>有长期发展的志向，</h2>
+									<h2>意志坚强、品行优良，</h2>
+									<h2>热爱祖国、热爱生活，</h2>
+									<h2><i style="color:#a51c30">你，</i>就是我们要找的<i style="color:#a51c30">年轻人！</i></h2>
+									<h2 style="padding:15px 0"></h2>
+									<a class="button active" style="background:#a51c30;font-size:18px;padding: 10px 20px" href="#" onclick="javascript:window.open('http://s.ehejun.com/student/step/index')"
+									 title="">网 申 入 口</a>
+								</div><!-- Explore Edu -->
+							</div>
+							<div class="col-md-12">
+								<div class="gap"></div>
+								<div class="easyedu-counter">
+									<div class="row">
+										<div class="col-md-3">
+											<div class="counter">
+												<img src="photos/shizhong.png" alt="" />
+												<div class="counter-inner">
+													<strong>2018.11.1</strong>
+													<span>十二届招生正式启动</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="counter">
+												<img src="photos/shizhong.png" alt="" />
+												<div class="counter-inner">
+													<strong>2018.12.1</strong>
+													<span>各地招生面试启动</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="counter">
+												<img src="photos/shizhong.png" alt="" />
+												<div class="counter-inner">
+													<strong>2019.1.31</strong>
+													<span>首批录取截止日期</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="counter">
+												<img src="photos/shizhong.png" alt="" />
+												<div class="counter-inner">
+													<strong>2019.4.30</strong>
+													<span>十二届招生截止</span>
+												</div>
+											</div>
+										</div>
+	
+	
+	
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		<!-- 视频 -->
+		<section>
+			<div class="block gray" style="padding:20px 0 0;background:white">
+				<div class="container">
+					<div class="row">
+						<div class="title">
+							<h2 style="margin-bottom:20px">十五年来第一条官方宣传片</h2>
+							<!-- <span id="red">宣讲视频</span> -->
+
+							<video id="example_video_1" class="video-js vjs-default-skin" controls preload="auto" width="1200" height="auto"
+							 poster="photos/movie-bg.jpg">
+								<!-- <source src="http://sing.dazonghetong.com/f/movie.mp4" type='video/mp4' /> -->
+								<source src="http://hejun-mmtb-oss.hejunweilai.com/huaxia.mp4" type='video/mp4' />
+							</video>
+
+						</div>
+					</div>
+					<div class="shipin">
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+		<section>
+			<div class="block gray anit3">
+				<img src="photos/gushi.png" style="width:100%;height:auto" alt="">
+				<img src="photos/hjs2.png" style="width:100%;height:auto" alt="">
+			</div>
+		</section>
+		<!-- 搜索部分 -->
+		<footer style="background:none;padding-bottom:0;padding-top: 64px;font-family:'微软雅黑'">
+			<div class="container">
+				<div class="footer-widgets">
+					<div class="row">
+						<div class="col-md-6 foot1">
+							<div class="widget">
+								<div class="about-widget">
+									<!-- <div class="widget-logo"><a href="#" title=""><img src="images/logo2.png" alt="" /></a></div> -->
+									<!-- <h2 style="color:#a51c30;font-size: 22px">常见问题</h2> -->
+									<p class="hcase">有问题？搜搜看先</p>
+
+									<div class="col-md-8 ssinput">
+										<input class="question" type="text" style="height: 50px;left: 0;background: #3f3f3f1a" placeholder="搜索问题" />
+									</div>
+									<div class="col-md-4 ssbtn">
+										<div class="button  ss" style="height: 50px;right: -35px;background: #a51c30;cursor: pointer;">
+											搜 索</div>
+									</div>
+
+									<ul class="f3">
+										<!-- <li style="color: black;font-size: 16px;font-weight:500"><i class="f3-title">01</i> 基本资料提交问题</li>
+										<li style="color: black;font-size: 16px;font-weight:500"><i class="f3-title">02</i> 免笔试相关问题 </li>
+										<li style="color: black;font-size: 16px;font-weight:500"><i class="f3-title">03</i> 录取相关问题</li> -->
+									</ul>
+								</div>
+							</div><!-- Widget -->
+						</div>
+
+
+						<div class="col-md-6 pcfoot2">
+							<div class="widget">
+								<img src="photos/commoncase2.png" style="height:80%;width:auto;padding-left:50px;padding-top:30px" alt="">
+							</div>
+
+						</div>
+						<div class="col-md-6 phonefoot2">
+							<div class="widget">
+								<!-- <img src="photos/commoncase2.png" style="height:auto;width:100%" alt=""> -->
+							</div><!-- Widget -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer><!-- Footer -->
+
+
+
+		<!-- 底部 -->
+		<!-- <div class="block footer" style="padding:0">
+			<div class="row footer-inner">
+				<div class="col-md-6 footer-left">
+					<div style=" margin-bottom:25px; "><i style="display:inline-block;vertical-align: middle;margin-right:15px;
+                        background: url(photos/LOGO.png)no-repeat center;width: 67px;height: 67px;"></i>和君商学院</div>
+					<p class="linhgt">客服电话：0755-64599545</p>
+					<p class="linhgt">邮箱：hejunshangxueyuan.com</p>
+					<p class="linhgt">联系地址：北京朝阳区北苑路86号院E区213号楼</p>
+				</div>
+				<div class="col-md-6 footer-right">
+					<div style=" margin-bottom:15px; font-size:12px"><i style="display:inline-block;vertical-align: middle;margin-right:15px;
+                                background: url(photos/ewm.png)no-repeat center;width: 100px;height: 100px;"></i>关注和君商学院，遇见更好的自己</div>
+					<p class="linhgt">京ICP备0258967号-5</p>
+					<p class="linhgt">北京和君商学院在线科技股份有限公司</p>
+				</div>
+			</div>
+		</div> -->
+
+
+
+
+
+		<div class="block footer" style="padding:0">
+			<div class="row footer-inner">
+				<div class="col-md-6 footer-left">
+					<!-- <div style=" margin-bottom:25px; "><i style="display:inline-block;vertical-align: middle;margin-right:15px;
+                        background: url(photos/LOGO.png)no-repeat center;width: 67px;height: 67px;"></i>和君商学院</div> -->
+					<p class="linhgt" style="color: black;font-size: 16px;font-weight: 600">咨询电话：400-806-1072</p>
+					<p class="linhgt" style="color: black;font-size: 16px;font-weight: 600;padding-bottom:15px">申请相关问题，亦可在网申系统中在线咨询</p>
+					<p class="linhgt" style="line-height:20px;color:black">京ICP备11029302号</p>
+					<p class="linhgt" style="line-height:20px;color:black">北京和君商学院在线科技股份有限公司</p>
+					<p class="linhgt" style="line-height:20px;color:black">联系地址：北京朝阳区北苑路86号院E区213号楼</p>
+				</div>
+				<div class="col-md-6 footer-right">
+
+					<div style=" margin-bottom:15px; font-size:12px;float: right;"><i style="display:inline-block;vertical-align: middle;
+                                background: url(photos/ewm2.png)no-repeat center;background-size:100%;margin-top:-27px"></i></div>
+					<!-- <p class="linhgt" style="float:right;width: 20px;font-family: '楷体';color: black;font-weight: 600;margin-right:20px">关注和君商学院</p>
+					<p class="linhgt" style="float:right;width: 20px;font-family: '楷体';color: black;font-weight: 600">遇见更好的自己</p> -->
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+	<!-- <script src="js/jquery.min.js" type="text/javascript"></script>	 -->
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/counter.js"></script>
+	<script src="js/script.js" type="text/javascript"></script>
+	<script src="js/data.js"></script>
+	<script>
+		// var  ht =$(".foot1").height();
+		// $(".foot2").height(ht)
+		// console.log($(".foot2").height())
+
+
+		// 三个代表问题请求
+		$.ajax({
+			type: 'GET',
+			url: "http://sing.dazonghetong.com/qa/find",
+			data: {},
+			success: function (res) {
+				if (res.code == 200) {
+					for (var i = 0; i < res.data.length; i++) {
+						// console.log(res.data[i])
+						var _uuid = res.data[i].uuid;
+						for (var n = 0; n < qa.length; n++) {
+							if (_uuid == qa[n].uuid) {
+								var _index = i + 1
+								$(".f3").append("<li style='color: black;font-size: 16px;font-weight:500'><span class='f3-title'>" + 0 + _index + "</span><p>" + qa[n].q + "</p></li>")
+							}
+						}
+					}
+
+
+
+				} else {
+					alert(res.data);
+				}
+			},
+			error: function () {
+				for (var i = 0; i < 3; i++) {
+					var adc = i + 1;
+					$(".f3").append("<li style='color: black;font-size: 16px;font-weight:500'><span class='f3-title'>" + 0 + adc + "</span><p>" + qa[i].q + "</p></li>")
+				}
+			}
+		});
+
+		// 三个问题点击事件
+		$(".f3").on("click", "li", function () {
+			localStorage.clear()
+			// $(this).find("p").text()
+			console.log($(this).find("p").text())
+			var sv = $(this).find("p").text()
+			localStorage.setItem("key", sv)
+			window.location.href = 'commoncase.html'
+
+		})
+
+
+
+
+
+
+
+
+
+		// 首页移动端的下拉菜单
+		$(".header-right").click(function () {
+			$(".select-list").toggle();
+			$(this).toggleClass("closed");
+			if ($(".select-list").css("display") == "block") {
+				$("body").on("touchmove", function (event) {
+					event.preventDefault;
+				}, false)
+				// $("body").height($(window).height());
+			}
+		})
+
+
+		// 点击搜索跳转
+		$(".ss").click(function () {
+			if ($(".question").val() == "") {
+				window.open('commoncase.html')
+			} else {
+				window.open('commoncase.html')
+				var sv = $(".question").val()
+				localStorage.setItem("key", sv)
+			}
+		})
+		// 头部的tab切换
+		$(".ac").click(function () {
+			$(this).addClass("ac-active").siblings().removeClass("ac-active")
+		})
+		window.onscroll = function () {
+			var t = document.documentElement.scrollTop || document.body.scrollTop;
+			if (t >= 400) {
+				$(".logo").css("display", "block")
+				$(".registration .ac").css("color", "black")
+				$(".scroll-header").css("background", "white")
+				$(".scroll-header").css("box-shadow", "5px 0 5px #666")
+				$(".scroll-header .ac").css("padding-bottom", "20px")
+				// $(".scroll-header").css("padding-top", "10px")
+			} else {
+				// $(".registration .ac").css("color","white")
+				$(".scroll-header").css("background", "none")
+				$(".logo").css("display", "none")
+				$(".registration .ac").css("color", "white")
+				$(".scroll-header").css("box-shadow", "0px 0 0px #666")
+				$(".scroll-header .ac").css("padding-bottom", "0")
+			}
+		}
+
+		// 6个模块的index切换
+		
+	</script>
+
+</body>
+
+</html>

@@ -57,7 +57,8 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/logout", "anon");
 		filterChainDefinitionMap.put("/encrypt", "anon");//密码加密
 		filterChainDefinitionMap.put("/qa/**", "anon");//答疑页相关链接，不用登录直接访问
-		filterChainDefinitionMap.put("/news_view/**", "anon");//新闻展示页，不用登录直接访问
+		filterChainDefinitionMap.put("/news_view/**", "anon");//新闻展示页，不用登录直接访问\
+		filterChainDefinitionMap.put("/special_view/**", "anon");//新闻展示页，不用登录直接访问
 //		filterChainDefinitionMap.put("/**", "anon");
 		filterChainDefinitionMap.put("/**", "authc");
 

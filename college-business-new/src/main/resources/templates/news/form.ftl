@@ -85,6 +85,12 @@
         	<li><a href="/sys_new"><span class="am-icon-table"></span> 新闻列表</a></li>
           </ul>
         </li>
+        <li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#special-nav'}"><span class="am-icon-file"></span> 专题管理  <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="special-nav">
+            <li><a href="/sys_special"><span class="am-icon-table"></span> 专题列表</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -135,9 +141,9 @@
             	</div>
             	<div class="am-g am-margin-top">
                     <div class="am-u-sm-4 am-u-md-2 am-text-right">头图</div>
-                    <div class="am-u-sm-8 am-u-md-4">
+                    <div class="am-u-sm-12 am-u-md-10">
                         <input type="file" id="headImgFileInput" name="headImg" accept="image/png, image/jpeg, image/jpg" />
-                        <p class="am-form-help">请选择要上传的文件...</p>
+                        <p class="am-form-help" style="font-size:16px;color:#666;">提示：建议上传jpg、png、jpeg格式的图片，图片大小控制在500kb以内，尺寸160x100px</p>
                     </div>
                     <div class="am-hide-sm-only am-u-md-6"></div>
                 </div>
@@ -149,6 +155,8 @@
                 </div>
             	<div class="am-g am-margin-top-sm">
               		<div class="am-u-sm-12 am-u-md-2 am-text-right admin-form-text">内容</div>
+					<div class="am-hide-sm-only am-u-md-6" style="font-size:16px;color:#666;margin-bottom:5px;">提示：上传图片文件的大小建议为 5 M 以下！</div>
+					
               		<div class="am-u-sm-12 am-u-md-10">
                 		<div class="summernote" name="content" placeholder="正文" action="/sys_new/upload"></div>
 						<input type="hidden" id="summernoteContent" required="required" value="${(entity.content!'')?html}" />

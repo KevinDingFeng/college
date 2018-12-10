@@ -65,6 +65,12 @@
         	<li><a href="/sys_new"><span class="am-icon-table"></span> 新闻列表</a></li>
           </ul>
         </li>
+        <li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#special-nav'}"><span class="am-icon-file"></span> 专题管理  <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="special-nav">
+            <li><a href="/sys_special"><span class="am-icon-table"></span> 专题列表</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
