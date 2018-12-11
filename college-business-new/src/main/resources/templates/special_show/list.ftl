@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="format-detection" content="telephone=no">
-    <title>资讯中心</title>
+    <title>专题模块</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="generator" content="MetInfo 6.1.3" data-variable="https://show.metinfo.cn/m/mui005/334/|cn|cn|mui005|2|23|0"
@@ -89,12 +89,12 @@
 
         <div class="banner_met_11_1 page-bg" m-id='62' m-type="banner">
             <div class="slick-slide">
-                <img class="cover-image" src="/f/special/list_banner.jpg" sizes="(max-width: 767px) 767px" alt="资讯中心">
+                <img class="cover-image" src="/f/special/list_banner.jpg" sizes="(max-width: 767px) 767px" alt="专题模块">
                 <div class="banner-text p-4">
                     <div class='container'>
                         <div class='banner-text-con'>
                             <div>
-                                <h3 class="animation-fade font-weight-500" style="color:#ffffff">资讯中心</h3>
+                                <h3 class="animation-fade font-weight-500" style="color:#ffffff">专题模块</h3>
                                 <p class="animation-fade " style='color:red'></p>
                                 <!-- ................................................... -->
                             </div>

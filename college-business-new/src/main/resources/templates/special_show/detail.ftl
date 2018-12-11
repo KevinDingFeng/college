@@ -132,12 +132,12 @@
 
     <div class="banner_met_11_1 page-bg" m-id="62" m-type="banner">
         <div class="slick-slide">
-            <img class="cover-image" src="/f/special/detail_banner.jpg" sizes="(max-width: 767px) 767px" alt="资讯中心">
+            <img class="cover-image" src="/f/special/detail_banner.jpg" sizes="(max-width: 767px) 767px" alt="专题模块">
             <div class="banner-text p-4">
                 <div class="container">
                     <div class="banner-text-con">
                         <div>
-                            <h3 class="animation-fade font-weight-500" style="color:#ffffff">资讯中心</h3>
+                            <h3 class="animation-fade font-weight-500" style="color:#ffffff">专题模块</h3>
                             <p class="animation-fade " style="color:"></p>
                         </div>
                     </div>
