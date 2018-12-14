@@ -11,7 +11,7 @@
     <meta name="keywords" content="${entity.title}">
     <meta name="generator" content="MetInfo 6.1.3" data-variable="https://show.metinfo.cn/m/mui005/334/|cn|cn|mui005|2|23|7"
         data-user_name="">
-    <link href="/special_view/img/mewlogo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="/special_view/img/newlogo.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/special_view/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/special_view/css/new_cn.css">
     <style>
@@ -153,7 +153,7 @@
                 <div class="col-md-12 met-shownews-body" m-id="70">
                     <div class="row" style=" margin-right: 0;
                  margin-left:0; ">
-                        <section class="details-title border-bottom1">
+                        <section class="details-title border-bottom1" style="text-align: center;">
                             <h1 class="m-t-10 m-b-5">${entity.title}</h1>
                             <div class="info font-weight-300">
                                 <span>${entity.creation}</span>

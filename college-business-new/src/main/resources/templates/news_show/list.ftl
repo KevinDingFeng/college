@@ -12,7 +12,7 @@
     <meta name="keywords" content="">
     <meta name="generator" content="MetInfo 6.1.3" data-variable="https://show.metinfo.cn/m/mui005/334/|cn|cn|mui005|2|23|0"
         data-user_name="">
-    <link href="/news_view/img/mewlogo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="/news_view/img/newlogo.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/news_view/css/basic.css">
     <link rel="stylesheet" type="text/css" href="/news_view/css/new_cn1.css">
     <style>

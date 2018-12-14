@@ -106,8 +106,7 @@ $("#box").on("click",".toglebtn",function(){
                 var uuid = _slided
                 $.ajax({
                     type: 'POST',
-                    // url: "http://localhost:8080/qa/add/" + uuid,
-                    url: "http://sing.dazonghetong.com/qa/add/" + uuid,
+                    url: WEB_URL + "/qa/add/" + uuid,
                     data: {},
                     success: function(res){
                         console.log(res);
@@ -149,7 +148,7 @@ var btnclick = document.getElementById('btn_test');
     var uuid = $(this).attr("kid")
     $.ajax({
         type: 'POST',
-        url: "http://sing.dazonghetong.com/qa/add/" + uuid,
+        url: WEB_URL + "/qa/add/" + uuid,
         data: {},
         success: function(res){
             if(res.code == 200){

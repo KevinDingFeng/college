@@ -473,7 +473,6 @@
 
 							<video id="example_video_1" class="video-js vjs-default-skin" controls preload="auto" width="1200" height="auto"
 							 poster="photos/movie-bg.jpg">
-								<!-- <source src="http://sing.dazonghetong.com/f/movie.mp4" type='video/mp4' /> -->
 								<source src="http://hejun-mmtb-oss.hejunweilai.com/huaxia.mp4" type='video/mp4' />
 							</video>
 
@@ -604,7 +603,7 @@
 		// 三个代表问题请求
 		$.ajax({
 			type: 'GET',
-			url: "http://sing.dazonghetong.com/qa/find",
+			url: WEB_URL + "/qa/find",
 			data: {},
 			success: function (res) {
 				if (res.code == 200) {
@@ -618,11 +617,12 @@
 							}
 						}
 					}
-
-
-
 				} else {
-					alert(res.data);
+					//alert(res.data);
+					for (var i = 0; i < 3; i++) {
+	                    var adc = i + 1;
+	                    $(".f3").append("<li style='color: black;font-size: 16px;font-weight:500'><span class='f3-title'>" + 0 + adc + "</span><p>" + qa[i].q + "</p></li>")
+	                }
 				}
 			},
 			error: function () {

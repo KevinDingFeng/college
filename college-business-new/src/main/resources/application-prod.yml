@@ -31,6 +31,10 @@ spring:
         password: Hejun1q2w3e
         database: 1
         timeout: 0
+    http:
+        multipart:
+            maxFileSize: 1000Mb
+            maxRequestSize: 1000Mb
 file:
     path:
         show: /f/
