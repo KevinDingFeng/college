@@ -68,7 +68,7 @@
                                     <a target="_self" href="http://student.hejunedu.com/" title="学习系统" class="nav-link dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">学习系统</a>
                                 </li>
                                 <li class="nav-item dropdown m-l-15">
-                                    <a target="_self" href="#" title="新闻资讯" class="nav-link dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">新闻资讯</a>
+                                    <a target="_self" href="#" title="资讯中心" class="nav-link dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">资讯中心</a>
                                 </li>
                                 <li class="nav-item dropdown m-l-15">
                                     <a target="_self" href="/special_view/list" title="专题模块" class="nav-link dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">专题模块</a>

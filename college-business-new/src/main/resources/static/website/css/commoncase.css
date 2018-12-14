@@ -668,6 +668,10 @@ display: none;
   background: url(../photos/main3.png)no-repeat center;
   background-size:80%;
  }
+ .select-list ul li:nth-child(5) i{
+  background: url(../photos/main4.png)no-repeat center;
+  background-size:80%;
+ }
  .closed{
   height: 35px;
   width: 35px;
