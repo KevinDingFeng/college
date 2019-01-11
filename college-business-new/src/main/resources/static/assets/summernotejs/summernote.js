@@ -61,6 +61,8 @@ function iframeCallback(formId) {
 	$("div.summernote", $form).each(
 			function() {
 				var $this = $(this);
+//				console.log($this.summernote('code').length);
+//				console.log($this.summernote('code'));
 				if (!$this.summernote('isEmpty')) {
 					var editor = "<input type='hidden' name='"
 							+ $this.attr("name") + "' value='"

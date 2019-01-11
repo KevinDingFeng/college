@@ -204,6 +204,7 @@
 
         <input type="hidden" name="met_lazyloadbg" value="">
     </body>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66157982" charset="UTF-8"></script>
     <script src="/news_view/js/jquery-1.12.4.js"></script>
     <script>
 $(".met-nav-toggler").click(function(){
